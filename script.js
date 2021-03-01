@@ -1,7 +1,7 @@
 document.getElementById("demo").innerHTML = "Qalyn mal calculator";
 document.getElementById("education").style.color = "blue";
 document.getElementById("networth").style.color = "green";
-
+const prop = new Array;
 
 let person = {
   name: null,
@@ -9,148 +9,126 @@ let person = {
   letter: null
 }
 
-var name;
-var price;
-var report = new Array;
+let calculate = () => {
+  if (person.name == "" && isNaN(person.price)) {
+    alert("Error");
+  } else {
+    skill_age_gossips("skills");
+    skill_age_gossips("age");
+    skill_age_gossips("gossips");
 
-let groomsName = () => {
-  person.name = prompt("Name");
+    prop.push(person.name);
+    prop.push(person.price);
+    var loveLetter = document.getElementById('loveLetter').value;
+    letter(loveLetter);
+    
+    alert("Groom's name is " + person.name + "\nStarting bid is " + person.price + "$" + `\nGroom's price is ${result} $` + "\nYour letter for him\n" + person.letter);
+  }
 }
-groomsName();
 
-let groomsPrice = () => {
-  person.price = parseInt(prompt("Price ($)"));
-}
-groomsPrice();
-
+var name, price;
+person.name = prompt("Name");
+person.price = parseInt(prompt("Price ($)"));
 var result = person.price;
-
-
-
 
 let letter = (letter) => {
   person.letter = letter;
 }
 
-
-function first() {
+function edu() {
   var education = document.getElementById("education").value;
-  if (education == "bachelor") {
-    result = person.price * 1.5;
-    console.log(education + " " + result);
-  } else if (education == "college") {
-    result = person.price * 1.2;
-    console.log(education + " " + result);
-  } else if (education == "high_school") {
-    result = person.price * 1.05;
-    console.log(education + " " + result);
-  } else if (education == "middle_school") {
-    result = person.price * 0.9;
-    console.log(education + " " + result);
+  switch (education) {
+    case "1.5":
+      result = person.price * 1.5;
+      break;
+    case "1.2":
+      result = person.price * 1.2;
+      break;
+    case "1.05":
+      result = person.price * 1.05;
+      break;
+    case "0.9":
+      result = person.price * 0.9;
+      break;
   }
 }
 
-function second() {
+function fam() {
   var networth = document.getElementById("networth").value;
-
-  if (networth == "upper_class") {
-    result *= 2;
-    console.log(networth + " " + result);
-  } else if (networth == "middle_class") {
-    result *= 1.5;
-    console.log(networth + " " + result);
-  } else if (networth == "lower_class") {
-    result *= 1.2;
-    console.log(networth + " " + result);
+  switch (networth) {
+    case "2":
+      result *= 2;
+      break;
+    case "1.5":
+      result *= 1.5;
+      break;
+    case "1.2":
+      result *= 1.2;
+      break;
   }
 }
 
-function others(id) {
-  var options = document.getElementsByName(id);
+function skill_age_gossips(id) {
+  var checkOpt = document.getElementsByName(id);
 
-
-
-  for (var i = 0; i < options.length; i++) {
-    if (options[i].checked) {
-      if (id == "skills") {
-        calculating_skills(options[i].value);
-      } else if (id == "age") {
-        calculating_age(options[i].value);
-      } else if (id == "reputation") {
-        calculating_rep(options[i].value);
+  for (var i = 0; i < checkOpt.length; i++) {
+    if (checkOpt[i].checked) {
+      switch (id) {
+        case "skills":
+          skills(checkOpt[i].value);
+          break;
+        case "age":
+          age(checkOpt[i].value);
+          break;
+        case "gossips":
+          gossips(checkOpt[i].value);
+          break;
       }
     }
   }
 }
 
-function calculating_skills(skill) {
+function skills(skill) {
   result += parseInt(skill);
   console.log(skill + " skill " + result);
 }
 
-
-function calculating_age(num) {
-  result *= Number(num);
-  console.log(num + " age " + result);
+function age(age) {
+  result *= Number(age);
+  console.log(age + " age " + result);
 }
 
-function calculating_rep(reputation) {
-  if (reputation == 0.85 || reputation == 0.9) {
-    result *= reputation;
-    console.log(reputation + " reputation " + result);
-  } else {
-    result -= reputation;
-    console.log(reputation + " reputation " + result);
+function gossips(gossips) {
+  switch (gossips) {
+    case "0.85":
+      result *= gossips;
+      break;
+    case "0.9":
+      result *= gossips;
+    case "200":
+      result -= gossips;
   }
 }
 
-const checkedGossips = new Array;
-
-checkedGossips.forEach((item, i) => {
+const check = new Array;
+check.forEach((item, i) => {
   if (gossipsEls[i].checked == true) {
-    checkedGossips.push(parseFloat(item));
+    check.push(parseFloat(item));
   }
 });
 
-checkedGossips.forEach((item, i) => {
-  if (checkedGossips[i] % 1 == 0 || checkedGossips[i] == 0) {
-    alert(checkedGossips[i]);
-    result += checkedGossips[i];
+check.forEach((item, i) => {
+  if (check[i] % 1 == 0 || check[i] == 0) {
+    alert(check[i]);
+    result += check[i];
   } else {
-    result *= checkedGossips[i];
+    result *= check[i];
   }
 });
 
 var button = document.getElementById("submit");
 if (button) {
   button.addEventListener("click", calculate, false);
-}
-
-
-let reportFunc = () => {
-  var reportFinal = report.reduce(function(sum, current) {
-    console.log(`Name: ${sum} \nStart Price: ${current}`);
-    return sum + current;
-  })
-}
-
-let calculate = () => {
-
-  if (person.name == "" || isNaN(person.price)) {
-    alert("Error");
-  } else {
-    others("skills");
-    others("age");
-    others("reputation");
-
-    report.push(person.name);
-    report.push(person.price);
-    reportFunc();
-
-    var templateLetter = document.getElementById('loveLetter').value;
-    letter(templateLetter);
-    alert("Name: " + person.name + "\nStart price: " + person.price + "$" + `\nResult: ${result} $` + "\nLetter:\n" + person.letter);
-  }
 }
 
 var button = document.getElementById('acceptButton');
