@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!-- Own CSS -->
+  <link rel="stylesheet" href="style.css">
+  <title>Qalyn mal calculator</title>
+</head>
+
+<body>
+  <div class="container mt-4 shadow p-3 mb-5 bg-white rounded img img-bg-color">
+    <div class="row">
+      <div class="col col-sm-12">
+        <h1 class="text-center" id="demo"></h1>
+        <form>
+          <label id="test"><b> Groom's education</b></label><br>
+          <select id="education" onchange="first();">
+            <option value="blank"></option>
+            <option value="bachelor"> Bachelor's degree</option>
+            <option value="college"> College degree</option>
+            <option value="high_school"> High school degree</option>
+            <option value="middle_school"> Middle school degree</option>
+          </select>
+          <hr>
+          <label><b> Groom's family net worth</b></label><br>
+          <select id="networth" onchange="second();">
+            <option value="blank"></option>
+            <option value="upper_class"> More than 100,000$</option>
+            <option value="middle_class"> Between 50,000$ and 100,000$</option>
+            <option value="lower_class"> Less than 50,000$</option>
+          </select>
+          <hr>
+          <label><b> Groom's skills</b></label><br>
+
+          <form id="skills">
+            <input type="checkbox" name="skills" value="100">
+            <label for="3.1"> Playing on dombra </label><br>
+            <input type="checkbox" name="skills" value="200">
+            <label for="3.2"> Good cook</label><br>
+            <input type="checkbox" name="skills" value="150">
+            <label for="3.3"> Easygoing character</label><br>
+            <input type="checkbox" name="skills" value="100">
+            <label for="3.4"> Sings well</label><br>
+          </form>
+          <hr>
+
+          <form id="age">
+            <p><b> Groom's age</b></p>
+            <p><input type="radio" name="age" value="1.5"> Between 18-23</p>
+            <p><input type="radio" id="4.2" name="age" value="1.2"> Between 24-27</p>
+            <p><input type="radio" id="4.3" name="age" value="0.95"> 28+</p>
+          </form>
+          <hr>
+
+          <form id="reputation">
+
+          </form>
+          <p><b>Groom's reputation: </b></p>
+          <input class="gossipsEls" type="checkbox" id="5.1" name="reputation" value="0.85">
+          <label for="5.1"> Gossips about his parent's attitude </label><br>
+
+          <input class="gossipsEls" type="checkbox" id="5.2" name="reputation" value="0.9">
+          <label for="5.2"> Gossips about his character</label><br>
+
+          <input class="gossipsEls" type="checkbox" id="5.3" name="reputation" value="200">
+          <label for="5.3"> General gossips around his person</label><br>
+        </form>
+        <hr>
+
+        <textarea name="loveLetter" rows="8" cols="80" placeholder="Love Letter" id="loveLetter" maxlength="500"></textarea><br><br>
+
+        <input type="button" value="Calculate price" id="acceptButton" class="btn btn-primary">
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+</html>
